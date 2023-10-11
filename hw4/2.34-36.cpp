@@ -8,6 +8,12 @@ struct Node {
   Node* ptr = nullptr;
 };
 
+Node* Xor(Node* a, Node* b) { return (Node*)((uintptr_t)a ^ (uintptr_t)b); }
+
+Node* Xor(Node* a, Node* b, Node* c) {
+  return (Node*)((uintptr_t)a ^ (uintptr_t)b ^ (uintptr_t)c);
+}
+
 struct LinkedList {
   // left and right are dummy head nodes containing no data
   Node* left = nullptr;
@@ -28,8 +34,7 @@ struct LinkedList {
     Node* previous = this->left;
     Node* current = this->left->ptr;
     Node* next = nullptr;
-    while ((next = (Node*)((uintptr_t)previous ^ (uintptr_t)current->ptr)) !=
-           nullptr) {
+    while ((next = Xor(previous, current->ptr)) != nullptr) {
       data.push_back(current->data);
       previous = current;
       current = next;
@@ -42,8 +47,7 @@ struct LinkedList {
     Node* previous = this->right;
     Node* current = this->right->ptr;
     Node* next = nullptr;
-    while ((next = (Node*)((uintptr_t)previous ^ (uintptr_t)current->ptr)) !=
-           nullptr) {
+    while ((next = Xor(previous, current->ptr)) != nullptr) {
       data.push_back(current->data);
       previous = current;
       current = next;
@@ -55,14 +59,14 @@ struct LinkedList {
   std::tuple<Node*, Node*, Node*> Index(unsigned int i) {
     Node* previous = this->left;
     Node* current = this->left->ptr;
-    Node* next = (Node*)((uintptr_t)previous ^ (uintptr_t)current->ptr);
+    Node* next = Xor(previous, current->ptr);
     for (unsigned int j = 0; j < i; j++) {
       if (next == nullptr) {
         throw std::runtime_error("Wrong index");
       }
       previous = current;
       current = next;
-      next = (Node*)((uintptr_t)previous ^ (uintptr_t)current->ptr);
+      next = Xor(previous, current->ptr);
     }
     return {previous, current, next};
   }
@@ -71,12 +75,9 @@ struct LinkedList {
   void Insert(unsigned int i, int data) {
     auto [previous, current, next] = this->Index(i);
     // now insert node between previous and current
-    Node* node = new Node{
-        .data = data, .ptr = (Node*)((uintptr_t)previous ^ (uintptr_t)current)};
-    previous->ptr = (Node*)((uintptr_t)previous->ptr ^ (uintptr_t)node ^
-                            (uintptr_t)current);
-    current->ptr = (Node*)((uintptr_t)previous ^ (uintptr_t)node ^
-                           (uintptr_t)current->ptr);
+    Node* node = new Node{.data = data, .ptr = Xor(previous, current)};
+    previous->ptr = Xor(previous->ptr, node, current);
+    current->ptr = Xor(previous, node, current->ptr);
   }
 
   // delete the node with index i (zero-based, from left)
@@ -86,10 +87,8 @@ struct LinkedList {
       throw std::runtime_error("Wrong index");
     }
     // now delete current node
-    previous->ptr = (Node*)((uintptr_t)previous->ptr ^ (uintptr_t)current ^
-                            (uintptr_t)next);
-    next->ptr = (Node*)((uintptr_t)previous ^ (uintptr_t)current ^
-                        (uintptr_t)next->ptr);
+    previous->ptr = Xor(previous->ptr, current, next);
+    next->ptr = Xor(previous, current, next->ptr);
     delete current;
   }
 };
