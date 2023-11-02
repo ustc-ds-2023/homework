@@ -111,8 +111,7 @@ bool operator==(const LinkedList& lhs, const std::vector<int>& rhs) {
 }
 
 int main() {
-  LinkedList list({});
-  list = LinkedList({1, 2, 3, 4});
+  LinkedList list = LinkedList({1, 2, 3, 4});
   assert((list.LeftIterate() == std::vector<int>{1, 2, 3, 4}));
   assert((list.RightIterate() == std::vector<int>{4, 3, 2, 1}));
   list.Insert(0, 0);

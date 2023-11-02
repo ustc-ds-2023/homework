@@ -62,7 +62,6 @@ int akm_stack(int m, int n, bool verbose = false) {
 }
 
 int main() {
-  assert(true);
   for (int m = 0; m < 4; m++) {
     for (int n = 0; n < 4; n++) {
       int result = akm_recursive(m, n);
@@ -73,7 +72,7 @@ int main() {
         assert(result == n + 2);
       } else if (m == 2) {
         assert(result == 2 * n + 3);
-      } else if (m == 2) {
+      } else if (m == 3) {
         assert(result == std::pow(2, n + 3) - 3);
       }
     }
