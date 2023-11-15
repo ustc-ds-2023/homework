@@ -1,0 +1,98 @@
+\documentclass[14pt]{extarticle}
+\usepackage[margin=0.1in,top=0.05in,bottom=0.05in]{geometry}
+\usepackage{graphicx}
+\usepackage{minted}
+\usemintedstyle{friendly}
+\setminted{breaklines,fontsize={\fontsize{12.5pt}{13pt}\selectfont},frame=single,framesep=10pt}
+\usepackage{fontspec}
+\setmainfont{Source Sans Pro}
+\setmonofont{Maple Mono SC NF}
+\usepackage{xeCJK}
+\setCJKmainfont{Source Han Sans SC}
+\usepackage{float}
+\usepackage{titlesec}
+\usepackage{amsmath}
+\titlespacing\section{0pt}{30pt plus 4pt minus 2pt}{5pt plus 2pt minus 2pt}
+\usepackage{hyperref}
+\makeatletter
+\renewcommand\@seccntformat[1]{}
+\makeatother
+
+\linespread{1.5}
+
+\begin{document}
+
+\section{6.38}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1.0\linewidth]{/home/yu/.latex-images/2023-11-14/1699965028629.png}
+\end{figure}
+
+
+\inputminted{cpp}{6.38.cpp}
+
+
+\section{6.45}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1.0\linewidth]{/home/yu/.latex-images/2023-11-14/1699965053637.png}
+\end{figure}
+
+
+\inputminted{cpp}{6.45.cpp}
+
+
+\section{6.48}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1.0\linewidth]{/home/yu/.latex-images/2023-11-14/1699965062960.png}
+\end{figure}
+
+
+\inputminted{cpp}{6.48.cpp}
+
+
+\section{6.71}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1.0\linewidth]{/home/yu/.latex-images/2023-11-14/1699965108913.png}
+\end{figure}
+
+
+\inputminted{cpp}{6.71.cpp}
+
+
+\section{6.58}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1.0\linewidth]{/home/yu/.latex-images/2023-11-14/1699965120552.png}
+\end{figure}
+
+
+\inputminted{cpp}{6.58.cpp}
+
+
+\section{6.26}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1.0\linewidth]{/home/yu/.latex-images/2023-11-14/1699965136630.png}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1.0\linewidth]{/home/yu/.latex-images/2023-11-14/1699969775607.png}
+\end{figure}
+
+
+哈夫曼平均编码长度：
+\begin{equation}
+    5*(0.02+0.03)+ 4*(0.06+0.07+0.1) +2*(0.32+0.19+0.21)=2.61
+\end{equation}
+
+0-7二进制平均编码长度：3
+
+
+优缺点分析：哈夫曼编码能减少编码长度，但编码和解码更慢，对传输错误不够鲁棒（Robust）。
+
+\end{document}
+
