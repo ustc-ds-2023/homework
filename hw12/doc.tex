@@ -1,0 +1,63 @@
+\documentclass[14pt]{extarticle}
+\usepackage[margin=0.1in,top=0.05in,bottom=0.05in]{geometry}
+\usepackage{graphicx}
+\usepackage{minted}
+\usemintedstyle{friendly}
+\setminted{breaklines,fontsize={\fontsize{12.5pt}{13pt}\selectfont},frame=single,framesep=10pt}
+\usepackage{fontspec}
+\setmainfont{Source Sans Pro}
+\setmonofont{Maple Mono SC NF}
+\usepackage{xeCJK}
+\setCJKmainfont{Source Han Sans SC}
+\usepackage{float}
+\usepackage{titlesec}
+\usepackage{amsmath}
+\titlespacing\section{0pt}{30pt plus 4pt minus 2pt}{5pt plus 2pt minus 2pt}
+\usepackage{hyperref}
+\makeatletter
+\renewcommand\@seccntformat[1]{}
+\makeatother
+
+\linespread{1.5}
+
+\begin{document}
+
+\section{7.11}
+\begin{figure}[H]
+        \centering
+        \includegraphics[width=1.0\linewidth]{/home/yu/.latex-images/2023-12-17/1702817547109.png}
+\end{figure}
+
+\begin{figure}[H]
+        \centering
+        \includegraphics[width=1.0\linewidth]{/home/yu/.latex-images/2023-12-17/1702817590698.png}
+\end{figure}
+
+\begin{minted}{text}
+节点 a 的最短距离为 0，尝试以该节点为源点优化路径
+        从节点 a 到节点 b 可使节点 b 距离更近（inf -> 15)，更新节点 b 距离
+        从节点 a 到节点 c 可使节点 c 距离更近（inf -> 2)，更新节点 c 距离
+        从节点 a 到节点 d 可使节点 d 距离更近（inf -> 12)，更新节点 d 距离
+节点 c 的最短距离为 2，尝试以该节点为源点优化路径
+        从节点 c 到节点 e 可使节点 e 距离更近（inf -> 10)，更新节点 e 距离
+        从节点 c 到节点 f 可使节点 f 距离更近（inf -> 6)，更新节点 f 距离
+节点 f 的最短距离为 6，尝试以该节点为源点优化路径
+        从节点 f 到节点 d 可使节点 d 距离更近（12 -> 11)，更新节点 d 距离
+        从节点 f 到节点 g 可使节点 g 距离更近（inf -> 16)，更新节点 g 距离
+节点 e 的最短距离为 10，尝试以该节点为源点优化路径
+节点 d 的最短距离为 11，尝试以该节点为源点优化路径
+        从节点 d 到节点 g 可使节点 g 距离更近（16 -> 14)，更新节点 g 距离
+节点 g 的最短距离为 14，尝试以该节点为源点优化路径
+节点 b 的最短距离为 15，尝试以该节点为源点优化路径
+\end{minted}
+
+\section{9.26}
+\begin{figure}[H]
+        \centering
+        \includegraphics[width=1.0\linewidth]{/home/yu/.latex-images/2023-12-17/1702817648934.png}
+\end{figure}
+
+\inputminted{cpp}{9.26.cpp}
+
+\end{document}
+
